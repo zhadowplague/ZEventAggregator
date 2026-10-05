@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <Nullable>enable</Nullable>
+    <PackageId>ZEventAggregator</PackageId>
+    <Version>1.0.0</Version>
+    <Description>Main package for ZEventAggregator.</Description>
+    <Authors>Albin Sjöström</Authors>
+    <Company>NA</Company>
+    <IsPackable>true</IsPackable>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/zhadowplague/</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ZEventAggregator.Generator\ZEventAggregator.Generator.csproj" />
+    <ProjectReference Include="..\ZEventAggregator.Types\ZEventAggregator.Types.csproj" />
+  </ItemGroup>
+</Project>
