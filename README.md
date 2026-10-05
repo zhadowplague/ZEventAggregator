@@ -1,8 +1,6 @@
-# SourceGeneration
+# ZEventAggregator
 
-Sampels of how to use Source Generators, Diagnostic Analyzers and Code Fixers.
-Currently they work best when used from a nuget package.
-
+Source generator for basic EventAggregator using ref structs as payloads
 
 # Resources
 https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/
