@@ -16,6 +16,7 @@ jobs:
   publish:
     name: "Publish to NuGet Gallery"
     runs-on: "windows-latest"
+    environment: production
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
