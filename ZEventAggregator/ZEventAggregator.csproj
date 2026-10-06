@@ -13,6 +13,7 @@
     <IsPackable>true</IsPackable>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/zhadowplague/</RepositoryUrl>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
