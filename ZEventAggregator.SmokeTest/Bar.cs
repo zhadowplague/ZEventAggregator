@@ -1,6 +1,8 @@
 ﻿using ZEventAggregator.Generator;
 using ZEventAggregator.Types;
 
+[assembly:GodotOverrides]
+
 namespace ZEventAggregator.SmokeTest
 {
 	public readonly ref struct Payload
@@ -8,7 +10,15 @@ namespace ZEventAggregator.SmokeTest
 		public readonly int Foo;
 	}
 
-	public class Bar : IReceive<int>
+	public partial class Node
+	{
+#pragma warning disable IDE1006 // Naming Styles
+		public virtual void _EnterTree() { }
+		public virtual void _ExitTree() { }
+#pragma warning restore IDE1006 // Naming Styles
+	}
+
+	public partial class Bar : Node, IReceive<int>
 	{
 		readonly IEventAggregator _test;
 

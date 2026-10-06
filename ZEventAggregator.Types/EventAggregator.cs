@@ -5,7 +5,9 @@ namespace ZEventAggregator.Types;
 
 public class EventAggregator : IEventAggregator
 {
-	readonly Dictionary<Type, List<IReceive>> _subscribers = new();
+	readonly Dictionary<Type, List<IReceive>> _subscribers = [];
+
+	public static IEventAggregator Singleton { get; protected set; }
 
 #if NETSTANDARD
 	public void Fire<T>(T @event)
