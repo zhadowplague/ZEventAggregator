@@ -5,19 +5,45 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <WarningsAsErrors>true</WarningsAsErrors>
     <Nullable>enable</Nullable>
+
     <PackageId>ZEventAggregator</PackageId>
     <Version>1.0.0</Version>
-    <Description>Main package for ZEventAggregator.</Description>
+    <Description>EventAggregator using interfaces with support for ref structs</Description>
     <Authors>Albin Sjöström</Authors>
     <Company>NA</Company>
     <IsPackable>true</IsPackable>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/zhadowplague/</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- Prevent nuspec dependency entries for referenced projects -->
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ZEventAggregator.Generator\ZEventAggregator.Generator.csproj" />
-    <ProjectReference Include="..\ZEventAggregator.Types\ZEventAggregator.Types.csproj" />
+    <!-- Build dependency only -->
+    <ProjectReference Include="..\ZEventAggregator.Generator\ZEventAggregator.Generator.csproj"
+                      ReferenceOutputAssembly="false"
+                      OutputItemType="Analyzer"
+                      PrivateAssets="all" />
+
+    <!-- Build dependency for types -->
+    <ProjectReference Include="..\ZEventAggregator.Types\ZEventAggregator.Types.csproj"
+                      PrivateAssets="all" />
   </ItemGroup>
+
+  <ItemGroup>
+    <!-- Put generator into analyzer assets -->
+    <None Include="..\ZEventAggregator.Generator\bin\$(Configuration)\netstandard2.0\ZEventAggregator.Generator.dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs"
+          Visible="false" />
+
+    <!-- Put types assembly into lib so consumers get it from same package -->
+    <None Include="..\ZEventAggregator.Types\bin\$(Configuration)\$(TargetFramework)\ZEventAggregator.Types.dll"
+          Pack="true"
+          PackagePath="lib/$(TargetFramework)"
+          Visible="false" />
+  </ItemGroup>
+
 </Project>

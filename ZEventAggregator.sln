@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZEventAggregator.Types", "Z
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZEventAggregator.SmokeTest", "ZEventAggregator.SmokeTest\ZEventAggregator.SmokeTest.csproj", "{6F25CBC3-5E32-4999-AA55-C82185002969}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{246697D6-EC23-4AAA-A6CB-912DAB0FFF63}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\push_nuget.yml = .github\workflows\push_nuget.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

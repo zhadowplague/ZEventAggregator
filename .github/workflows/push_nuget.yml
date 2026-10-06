@@ -1,0 +1,34 @@
+name: "Publish to NuGet Gallery"
+
+on:
+  release:
+    types: [published]
+
+env:
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
+  NUGET_SOURCE_URL: "https://api.nuget.org/v3/index.json"
+
+jobs:
+  publish:
+    name: "Publish to NuGet Gallery"
+    runs-on: "windows-latest"
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        
+      - name: "Install Dotnet"
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: "Pack project"
+        run: dotnet pack ZEventAggregator/ZEventAggregator.csproj --configuration Release --output "${{ env.PACKAGE_OUTPUT_DIRECTORY }}"
+          
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: "Push package"
+        run: dotnet nuget push "${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg" --api-key ${{steps.login.outputs.NUGET_API_KEY}} -s "${{ env.NUGET_SOURCE_URL }}"
