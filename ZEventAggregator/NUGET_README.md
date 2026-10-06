@@ -1,0 +1,1 @@
+Basic EventAggregator using interfaces with support for ref structs
