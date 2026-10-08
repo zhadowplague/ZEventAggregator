@@ -1,5 +1,7 @@
 # ZEventAggregator
 
+[![NuGet](https://img.shields.io/nuget/v/ZEventAggregator)](https://www.nuget.org/packages/ZEventAggregator/1.0.0-rc)
+
 Source generator for basic EventAggregator using ref structs as payloads
 
 # Resources
